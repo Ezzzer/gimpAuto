@@ -1,0 +1,18 @@
+GIMP 2.10.24 Python Console
+Python 2.7.18 (default, Apr 20 2020, 16:57:11)  [GCC 9.3.0 64 bit (AMD64)]
+>>> import sys
+>>> sys.path.append('C:\Users/ezer/.gimp-2.8/plug-ins/batch')
+>>> sys.path
+['', 'E:\\GIMP 2\\lib\\gimp\\2.0\\python', 'E:\\GIMP 2\\lib\\gimp\\2.0\\plug-ins\\python-console', 'E:\\GIMP 2\\lib\\python27.zip', 'E:\\GIMP 2\\lib\\python2.7', 'E:\\GIMP 2\\lib\\python2.7\\plat-win32', 'E:\\GIMP 2\\lib\\python2.7\\lib-tk', 'E:\\GIMP 2\\lib\\python2.7\\lib-old', 'E:\\GIMP 2\\lib\\python2.7\\lib-dynload', 'D:\\msys64\\mingw64', 'E:\\GIMP 2\\lib\\python2.7\\site-packages', 'E:\\GIMP 2\\lib\\python2.7\\site-packages\\gtk-2.0', 'C:\\Users/ezer/.gimp-2.8/plug-ins/batch']
+>>> import os
+>>> os.chdir('C:\Users\ezer\.gimp-2.8\plug-ins/batch')
+>>> from batch import *
+>>> run('D:\MakingMusic\Automatic Music Machine\3.In Progress\Bit38_Budhaa Bell Acid\images\temp')
+[]
+>>> run('D:\MakingMusic/Automatic Music Machine/3.In Progress/Bit38_Budhaa Bell Acid/images/temp')
+[]
+>>> run('D:\MakingMusic/Automatic Music Machine/3.In Progress/Bit38_Budhaa Bell Acid/images/temp')
+[]
+>>> run('D:\MakingMusic/Automatic Music Machine/3.In Progress/Bit38_Budhaa Bell Acid/images/temp')
+[]
+>>> 
