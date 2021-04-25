@@ -6,8 +6,10 @@ import time
 
 from gimpfu import *
 
+import config as cfg
 
-def create_image(index,file_name, text, params):
+
+def create_image(index, file_name, text, params):
     print 'create_image ' + file_name + " - " + text + "-" + params
     pa = params.split("|")
     font = pa[0]
@@ -31,17 +33,15 @@ def create_image(index,file_name, text, params):
         # pdb.plug_in_gmic_qt(img, img.active_layer,1,0,"fx_dreamsmooth  3,1,1,0.8,0,0.8,1,24,0.0 ")
         img.resize(layer.width, layer.height, 0, 0)
 
-        background = gimp.Layer(img, "Background"+str(index), layer.width, layer.height, RGB_IMAGE, 100.0, LAYER_MODE_DISSOLVE)
+        background = gimp.Layer(img, "Background" + str(index), layer.width, layer.height, RGB_IMAGE, 100.0,
+                                LAYER_MODE_DISSOLVE)
         pdb.plug_in_gmic_qt(img, layer, 1, 0, fx)
         img.add_layer(background, index)
-        print os.path.dirname(file_name)
-        print os.path.basename(file_name)
         directory = os.path.dirname(file_name)
-        directory = os.path.join( directory,"texts")
-        print "dir = " + directory
+        directory = os.path.join(directory, cfg.config["text_dir"])
         if not os.path.exists(directory):
             os.makedirs(directory)
-        outfile = os.path.join(directory, "text" + str(index) + ".jpg")
+        outfile = os.path.join(directory, "text" + str(index) + ".png")
         pdb.gimp_file_save(img, layer, outfile, '?')
 
     pdb.gimp_context_pop()
@@ -57,7 +57,7 @@ def create_text_images(file_name):
     with open(file_name) as f:
         lines = f.read().splitlines()
         index = 1
-        for i in range(0, len(lines) , 2):
+        for i in range(0, len(lines), 2):
             text = lines[i]
             params = lines[i + 1]
             create_image(index, file_name, text, params)

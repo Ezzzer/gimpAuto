@@ -1,0 +1,2 @@
+echo paint image : %1
+"E:\gimp 2\bin\gimp-console-2.10" --verbose -id --batch-interpreter python-fu-eval -b "import sys;sys.path.append('C:\Users/ezer/.gimp-2.8/plug-ins/batch');from paintImage import *;create_new_image('D:\MakingMusic/Automatic Music Machine/3.In Progress/Bit38_Budhaa Bell Acid/6x.png')" -b "pdb.gimp_quit(1)"
