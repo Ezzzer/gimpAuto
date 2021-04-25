@@ -13,7 +13,7 @@ Segoe UI Light| 85 | 0.8, 0.8, 1.0 |fx_gaussian_blur  3,0,0,1,0,0,0,50,50
 techno
 Segoe UI Light| 85 | 0.8, 0.8, 1.0 |fx_gcd_crt  1.8,1.8,0,0
 melodic
-Segoe UI Bold| 85 | 0.8, 0.8, 1.0 |fx_dreamsmooth  1,1,1,0.8,0,0.8,1,24,0.0
+Segoe UI Bold| 85 | 0.8, 0.8, 1.0 |fx_dreamsmooth  3,1,1,0.8,0,0.8,1,24,0.0
 LOVE
 Segoe UI Light| 85 | 0.8, 0.8, 1.0 |fx_gaussian_blur  3,0,0,1,0,0,0,50,50
 dance

@@ -6,9 +6,10 @@ config = {
     "input_text_file": "texts.txt",
     "image_dir": "images",
     "text_dir": "texts",
-    "processed_image": "processedImage1.png",
+    "processed_image": "processedImage.png",
     "logo": "D:/MakingMusic/Automatic Music Machine/Images/logoNew.png",
     "composer": "D:/MakingMusic/Automatic Music Machine/Images/ezzzer.png",
     "title": "D:/MakingMusic/Automatic Music Machine/Images/title.png",
     "dream":"D:/MakingMusic/Automatic Music Machine/Images/dream.png"
 }
+k6768

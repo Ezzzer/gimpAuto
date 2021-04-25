@@ -11,7 +11,7 @@ import createTextImages
 from createSitesImages import create_images
 
 
-def create_new_image(file_name, new_name, images_dir):
+def create_new_image(hue, file_name, new_name, images_dir):
     print('Running on image: ' + file_name)
     start = time.time()
     print 'Processing file %s ' % file_name
@@ -29,7 +29,7 @@ def create_new_image(file_name, new_name, images_dir):
     color = gimpcolor.RGB(250, 0, 0)  # Floats in 0.->1. range)
     pdb.gimp_palette_set_foreground(color)
     pdb.plug_in_gradmap(image, drawable)
-    pdb.gimp_drawable_hue_saturation(drawable, HUE_RANGE_ALL, 30, -25, 10, 100)
+    pdb.gimp_drawable_hue_saturation(drawable, HUE_RANGE_ALL, hue, -25, 10, 100)
     pdb.plug_in_gmic_qt(image, drawable, 1, 0, "fx_dreamsmooth  3,1,1,0.8,0,0.8,1,24,0.0")
     directory = os.path.dirname(file_name)
     directory = os.path.join(directory, images_dir)
@@ -47,10 +47,14 @@ def create_all():
     start = time.time()
     sys.stderr = open("C:/temp/python-fu-output.txt", 'a')
     sys.stdout = sys.stderr  # So that they both go to the same file
-    create_new_image(os.path.join(cfg.config["root_dir"], cfg.config["input_image"]),
+    create_new_image(30, os.path.join(cfg.config["root_dir"], cfg.config["input_image"]),
                      cfg.config["processed_image"],
                      cfg.config["image_dir"])
-    # createTextImages.create_text_images(os.path.join(cfg.config["root_dir"], cfg.config["input_text_file"]))
+    for i in range(0, 18):
+        create_new_image(-180+i*10, os.path.join(cfg.config["root_dir"], cfg.config["input_image"]),
+                         str(i)+".png",
+                         cfg.config["image_dir"])
+    createTextImages.create_text_images(os.path.join(cfg.config["root_dir"], cfg.config["input_text_file"]))
     create_images(os.path.join(cfg.config["root_dir"], cfg.config["image_dir"], cfg.config["processed_image"]))
     end = time.time()
     print "Finished, time: %.2f seconds" % (end - start)
