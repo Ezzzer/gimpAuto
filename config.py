@@ -12,4 +12,3 @@ config = {
     "title": "D:/MakingMusic/Automatic Music Machine/Images/title.png",
     "dream":"D:/MakingMusic/Automatic Music Machine/Images/dream.png"
 }
-k6768
