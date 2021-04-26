@@ -94,7 +94,7 @@ def get_image_dir():
 
 
 def get_processed_image_name():
-    infile = get_pic_image_file_name(cfg.config["processed_image"]+".png")
+    infile = get_pic_image_file_name(cfg.config["processed_image"])
     return infile
 
 
