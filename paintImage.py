@@ -60,7 +60,7 @@ def site_images():
 
 
 def text_images():
-    createTextImages.create_text_images(os.path.join(cfg.config["root_dir"], cfg.config["input_text_file"]))
+    createTextImages.create_text_images()
 
 
 def hue_images():

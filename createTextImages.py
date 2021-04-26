@@ -9,18 +9,12 @@ from gimpfu import *
 import config as cfg
 
 
-def create_image(index, file_name, text, params):
-    print 'create_image ' + file_name + " - " + text + "-" + params
-    pa = params.split("|")
-    font = pa[0]
-    size = pa[1]
-    temp = pa[2].split(',')
-    color = (float(temp[0]), float(temp[1]), float(temp[2]))
-    fx = pa[3]
-    print "font = " + font
-    print "size = " + size
-    # //print "color = " + len(color)
-    print "fx = " + fx
+def create_text_image(index, line, file_name=None):
+    text = line[0]
+    font = line[1]
+    size = line[2]
+    color = line[3]
+    fx = line[4]
     # Make a new image. Size 10x10 for now -- we'll resize later.
     img = gimp.Image(1, 1, RGB)
     pdb.gimp_context_push()
@@ -33,15 +27,24 @@ def create_image(index, file_name, text, params):
         # pdb.plug_in_gmic_qt(img, img.active_layer,1,0,"fx_dreamsmooth  3,1,1,0.8,0,0.8,1,24,0.0 ")
         img.resize(layer.width, layer.height, 0, 0)
 
-        background = gimp.Layer(img, "Background" + str(index), layer.width, layer.height, RGB_IMAGE, 100.0,
-                                LAYER_MODE_DISSOLVE)
-        pdb.plug_in_gmic_qt(img, layer, 1, 0, fx)
-        img.add_layer(background, index)
-        directory = os.path.dirname(file_name)
-        directory = os.path.join(directory, cfg.config["text_dir"])
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        outfile = os.path.join(directory, "text" + str(index) + ".png")
+        if index >= 0:
+            background = gimp.Layer(img, "Background" + str(index), layer.width, layer.height, RGB_IMAGE, 100.0,
+                                    LAYER_MODE_DISSOLVE)
+            pdb.plug_in_gmic_qt(img, layer, 1, 0, fx)
+            img.add_layer(background, index)
+            directory = os.path.dirname(cfg.config["root_dir"])
+            directory = os.path.join(directory, cfg.config["text_dir"])
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            outfile = os.path.join(directory, "text" + str(index) + ".png")
+        else:
+            background = gimp.Layer(img, "Background1", layer.width, layer.height, RGB_IMAGE, 100.0,
+                                    LAYER_MODE_DISSOLVE)
+            pdb.plug_in_gmic_qt(img, layer, 1, 0, fx)
+            img.add_layer(background, 1)
+            directory = os.path.dirname(cfg.config["winamp_root"])
+            outfile = os.path.join(directory, file_name + ".png")
+            print "writing file: " + outfile
         pdb.gimp_file_save(img, layer, outfile, '?')
 
     pdb.gimp_context_pop()
@@ -49,18 +52,22 @@ def create_image(index, file_name, text, params):
     pdb.gimp_image_delete(img)
 
 
-def create_text_images(file_name):
+def create_text_images():
     start = time.time()
     sys.stderr = open("C:/temp/python-fu-output.txt", 'a')
     sys.stdout = sys.stderr  # So that they both go to the same file
-    print('Input filename:: ' + file_name)
-    with open(file_name) as f:
-        lines = f.read().splitlines()
-        index = 1
-        for i in range(0, len(lines), 2):
-            text = lines[i]
-            params = lines[i + 1]
-            create_image(index, file_name, text, params)
-            index += 1
+    index = 1
+    # texts_list = cfg.config["text_list"]
+    # for line in texts_list:
+    #     create_text_image(index, line)
+    #     index += 1
+
+    index = -1
+    create_text_image(index, cfg.config["text_title"], "title")
+    create_text_image(index, cfg.config["text_composer"], "composer")
+    create_text_image(index, cfg.config["text_dream"], "dream")
+    create_text_image(index, cfg.config["text_title_small"], "title_small")
+    create_text_image(index, cfg.config["text_composer_small"], "composer_small")
+    create_text_image(index, cfg.config["text_dream_small"], "dream_small")
     end = time.time()
     print "Finished, time: %.2f seconds" % (end - start)

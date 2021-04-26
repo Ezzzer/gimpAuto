@@ -1,12 +1,12 @@
-LOVE
+PSYCHEDELIC
 Segoe UI Bold| 85 | 0.8, 0.8, 1.0 |fx_gaussian_blur  3,0,0,1,0,0,0,50,50
-EZZZER
+MUSIC
 Segoe UI Light| 85 | 0.8, 0.8, 1.0 |fx_dreamsmooth  1,1,1,0.8,0,0.8,1,24,0.0
-BUDDHA BELL
+BUDDHA ACID BELL
 Segoe UI Light| 85 | 0.8, 0.8, 1.0 |ripple  3.4,20,2,0,0
-connect
+MELODIC
 Segoe UI Light| 85 | 0.8, 0.8, 1.0 |fx_gcd_crt  1.8,1.8,0,0
-dance
+TRANCE
 Segoe UI Light| 85 | 0.8, 0.8, 1.0 |fx_wind  20,0,0.7,20,1,0,0,0,50,50
 trance
 Segoe UI Light| 85 | 0.8, 0.8, 1.0 |fx_gaussian_blur  3,0,0,1,0,0,0,50,50
@@ -16,5 +16,5 @@ melodic
 Segoe UI Bold| 85 | 0.8, 0.8, 1.0 |fx_dreamsmooth  3,1,1,0.8,0,0.8,1,24,0.0
 LOVE
 Segoe UI Light| 85 | 0.8, 0.8, 1.0 |fx_gaussian_blur  3,0,0,1,0,0,0,50,50
-dance
+DANCE
 Segoe UI Bold| 85 | 0.8, 0.8, 1.0 |fx_wind  20,0,0.7,20,1,0,0,0,50,50
