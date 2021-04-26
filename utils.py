@@ -14,10 +14,18 @@ def scale_crop(image, x, y):
     print image.height
     dx = 1.0
     dy = 1.0
+
     if image.width < x:
-        dx = x / image.width
+        dx = float(x) / image.width
+        image.scale(int(x), int(image.height * dx))
+
     if image.height < y:
-        dy = y / image.height
+        dy = float(y) / image.height
+        image.scale(int(image.width * dy), int(y))
+
+    dx = float(x) / image.width
+    dy = float(y) / image.height
+
     print dx, dy
     if dx > dy:
         image.scale(int(x), int(image.height * dx))

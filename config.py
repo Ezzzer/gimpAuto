@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-title = "CAFE AU PLANET Z3"
+title = "INDEPENDENCE SET"
 composer = "E Z Z Z E R"
 painter = "DREAM"
 banner = "PSY TECH PLANET"
-root_dir = "D:/MakingMusic/Automatic Music Machine/3.In Progress/Bit8_planet cafe"
+root_dir = "D:/MakingMusic/Automatic Music Machine/3.In Progress/Bit40DjSet"
 
 config = {"root_dir": root_dir,
           "actions": ["process_image", "text_images", "site_images", "hue_images", "copy_directories"],
