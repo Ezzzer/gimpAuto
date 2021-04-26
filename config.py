@@ -3,7 +3,7 @@
 title = "CAFE AU PLANET Z3"
 composer = "E Z Z Z E R"
 painter = "DREAM"
-banner = "PSY MELODIC TECHNO MUSIC"
+banner = "PSY TECH PLANET"
 root_dir = "D:/MakingMusic/Automatic Music Machine/3.In Progress/Bit8_planet cafe"
 
 config = {"root_dir": root_dir,
@@ -23,7 +23,7 @@ config = {"root_dir": root_dir,
           "basic_image": "basic.png",
           "image_dir": "images",
           "text_dir": "texts",
-          "processed_image": "processedImage.png",
+          "processed_image": "processedImage",
           "logo_margin": 0.03,
           "logo": "D:/MakingMusic/Automatic Music Machine/Images/logoWhite.png",
           "winamp_root": "D:/MakingMusic/Automatic Music Machine/Images/",

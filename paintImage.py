@@ -47,7 +47,7 @@ def process_basic_image():
     drawable, image = create_dream_image(get_basic_image_file_name())
     pdb.gimp_drawable_hue_saturation(drawable, HUE_RANGE_ALL, process_image_hue_params[0], process_image_hue_params[1],
                                      process_image_hue_params[2], process_image_hue_params[3])
-    save_image(drawable, image, cfg.config["processed_image"])
+    save_image(drawable, image, cfg.config["processed_image"]+".png")
     pdb.gimp_image_delete(image)
 
 
