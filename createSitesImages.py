@@ -7,11 +7,13 @@ import time
 from gimpfu import *
 
 import config as cfg
-from utils import scale_crop
+from utils import scale_crop, get_text_image_file_name
 
 
 def load_image(image, name):
-    return pdb.gimp_file_load_layer(image, cfg.config[name])
+    if (cfg.config[name] != None):
+        return pdb.gimp_file_load_layer(image, cfg.config[name])
+    return pdb.gimp_file_load_layer(image, get_text_image_file_name(name))
 
 
 def add_image(image, new_image, offset_x, offset_y):
@@ -61,7 +63,6 @@ def process(infile, sites_image_list):
         add_image(image, new_image, int(x_pos), int(y_pos))
     drawable = image.active_layer
     directory = os.path.dirname(infile)
-    # directory = os.path.join(directory, "images")
     if not os.path.exists(directory):
         os.makedirs(directory)
     outfile = os.path.join(directory, new_name + ".png")

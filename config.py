@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 config = {
-    "actions": ["processed_image", "text_images", "site_images", "hue_images", "copy_directories"],
+     "actions": ["processed_image", "text_images", "site_images", "hue_images", "copy_directories"],
     # "actions": ["text_images", "copy_directories"],
     "circle": True,
     "process_image_hue_params": [30, -25, 10, 100],
@@ -17,16 +17,10 @@ config = {
     "processed_image": "processedImage.png",
     "logo_margin": 0.03,
     "logo": "D:/MakingMusic/Automatic Music Machine/Images/logoWhite.png",
-    "composer": "D:/MakingMusic/Automatic Music Machine/Images/composer.png",
-    "title": "D:/MakingMusic/Automatic Music Machine/Images/title.png",
-    "dream": "D:/MakingMusic/Automatic Music Machine/Images/dream.png",
-    "composer_small": "D:/MakingMusic/Automatic Music Machine/Images/composer_small.png",
-    "title_small": "D:/MakingMusic/Automatic Music Machine/Images/title_small.png",
-    "dream_small": "D:/MakingMusic/Automatic Music Machine/Images/dream_small.png",
     "winamp_root": "D:/MakingMusic/Automatic Music Machine/Images/",
     "site_image_list": [
-        ["YouTubeThumbnail", 1280.0, 720.0,
-         [["logo", "upr"], ["dream_small", "lowl"], ["title_small", "centerl"], ["composer", "center"]]],
+        ["YouTubeThumbnail", 1280.0, 720.0,[["logo", "upr"], ["dream_small", "lowl"], ["title_small", "centerl"], ["composer", "center"]]],
+        ["YouTubeBanner", 2560.0, 1440.0, [["banner_center", "center"], ["composer_small", "centeru"]]],
         ["HDWithText", 1920.0, 1080.0,
          [["logo", "lowr"], ["dream", "lowl"], ["title", "centerl"], ["composer", "center"]]],
         ["HD_verticalWithText", 1080.0, 1920.0,
@@ -37,7 +31,6 @@ config = {
         ["SoundCloudAlbumCoverAndBandCamp", 1400.0, 1400.0,
          [["logo", "lowr"], ["dream", "lowl"], ["title", "centerl"], ["composer", "centeru"]]],
         ["SoundCloudAvatar", 800.0, 800.0, []],
-        ["YouTubeBanner", 2560.0, 1140.0, [["title", "center"], ["composer_small", "centeru"]]],
         ["SpotifyBanner", 2660.0, 1140.0, []],
         ["SpotifyHeaderMax", 6000.0, 4000.0, []],
         ["DistroKid", 3000.0, 3000.0, []],
@@ -49,27 +42,24 @@ config = {
         ["FacebookLinkShare", 1200.0, 630.0, []],
         ["InstegramPic", 1080.0, 1350.0, []]
     ],
-    "text_list": [["PSYCHEDELIC", "Segoe UI Bold", 85, (1.0, 1.0, 1.0), "fx_gaussian_blur  3,0,0,1,0,0,0,50,50"],
-                  ["MUSIC", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_dreamsmooth  1,1,1,0.8,0,0.8,1,24,0.0"],
-                  ["BUDDHA ACID BELL", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "ripple  3.4,20,2,0,0"],
-                  ["MELODIC", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gcd_crt  1.8,1.8,0,0"],
-                  ["TRANCE", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_wind  20,0,0.7,20,1,0,0,0,50,50"],
-                  ["trance", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gaussian_blur  3,0,0,1,0,0,0,50,50"],
-                  ["techno", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gcd_crt  1.8,1.8,0,0"],
-                  ["melodic", "Segoe UI Bold", 85, (1.0, 1.0, 1.0), "fx_dreamsmooth  3,1,1,0.8,0,0.8,1,24,0.0"],
-                  ["LOVE", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gaussian_blur  3,0,0,1,0,0,0,50,50"],
-                  ["DANCE", "Segoe UI Bold", 85, (1.0, 1.0, 1.0), "fx_wind  20,0,0.7,20,1,0,0,0,50,50"]],
-    "text_composer": ["E Z Z Z E R", "Segoe UI Light", 85, (1.0, 1.0, 1.0),
-                      "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-    "text_title": ["BUDDHA ACID BELL", "Segoe UI Light", 85, (1.0, 1.0, 1.0),
-                   "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-    "text_dream": ["DREAM", "Segoe UI Light", 85, (1.0, 1.0, 1.0),
-                   "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-    "text_composer_small": ["E Z Z Z E R", "Segoe UI Light", 36, (1.0, 1.0, 1.0),
-                            "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-    "text_title_small": ["BUDDHA ACID BELL", "Segoe UI Light", 36, (1.0, 1.0, 1.0),
-                         "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-    "text_dream_small": ["DREAM", "Segoe UI Light", 36, (1.0, 1.0, 1.0),
-                         "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"]
-
+    "text_list_for_video": [
+        ["PSYCHEDELIC", "Segoe UI Bold", 85, (1.0, 1.0, 1.0), "fx_gaussian_blur  3,0,0,1,0,0,0,50,50"],
+        ["MUSIC", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_dreamsmooth  1,1,1,0.8,0,0.8,1,24,0.0"],
+        ["BUDDHA ACID BELL", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "ripple  3.4,20,2,0,0"],
+        ["MELODIC", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gcd_crt  1.8,1.8,0,0"],
+        ["TRANCE", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_wind  20,0,0.7,20,1,0,0,0,50,50"],
+        ["trance", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gaussian_blur  3,0,0,1,0,0,0,50,50"],
+        ["techno", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gcd_crt  1.8,1.8,0,0"],
+        ["melodic", "Segoe UI Bold", 85, (1.0, 1.0, 1.0), "fx_dreamsmooth  3,1,1,0.8,0,0.8,1,24,0.0"],
+        ["LOVE", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gaussian_blur  3,0,0,1,0,0,0,50,50"],
+        ["DANCE", "Segoe UI Bold", 85, (1.0, 1.0, 1.0), "fx_wind  20,0,0.7,20,1,0,0,0,50,50"]],
+    "text_list": [
+        ["composer", "E Z Z Z E R", "Segoe UI Light", 85, (1.0, 1.0, 1.0),         "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
+        ["banner_center", "PSYCHEDELIC ACID TECHNO MUSIC", "Segoe UI Light", 90, (1.0, 1.0, 1.0),         "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
+        ["title", "BUDDHA ACID BELL", "Segoe UI Light", 85, (1.0, 1.0, 1.0),         "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
+        ["dream", "DREAM", "Segoe UI Light", 85, (1.0, 1.0, 1.0),         "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
+        ["composer_small", "E Z Z Z E R", "Segoe UI Light", 36, (1.0, 1.0, 1.0),         "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
+        ["title_small", "BUDDHA ACID BELL", "Segoe UI Light", 36, (1.0, 1.0, 1.0),         "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
+        ["dream_small", "DREAM", "Segoe UI Light", 36, (1.0, 1.0, 1.0),         "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"]
+    ]
 }

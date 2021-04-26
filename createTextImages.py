@@ -7,6 +7,7 @@ import time
 from gimpfu import *
 
 import config as cfg
+from utils import get_text_image_file_name
 
 
 def create_text_image(index, line, file_name=None):
@@ -40,8 +41,7 @@ def create_text_image(index, line, file_name=None):
                                     LAYER_MODE_NORMAL)
             pdb.plug_in_gmic_qt(img, layer, 1, 0, fx)
             img.add_layer(background, 1)
-            directory = os.path.dirname(cfg.config["winamp_root"])
-            outfile = os.path.join(directory, file_name + ".png")
+            outfile = get_text_image_file_name(file_name)
         pdb.gimp_file_save(img, layer, outfile, '?')
 
     pdb.gimp_context_pop()
@@ -54,17 +54,15 @@ def create_text_images():
     sys.stderr = open("C:/temp/python-fu-output.txt", 'a')
     sys.stdout = sys.stderr  # So that they both go to the same file
     index = 1
-    texts_list = cfg.config["text_list"]
+    texts_list = cfg.config["text_list_for_video"]
     for line in texts_list:
         create_text_image(index, line)
         index += 1
 
     index = -1
-    create_text_image(index, cfg.config["text_title"], "title")
-    create_text_image(index, cfg.config["text_composer"], "composer")
-    create_text_image(index, cfg.config["text_dream"], "dream")
-    create_text_image(index, cfg.config["text_title_small"], "title_small")
-    create_text_image(index, cfg.config["text_composer_small"], "composer_small")
-    create_text_image(index, cfg.config["text_dream_small"], "dream_small")
+    texts_list = cfg.config["text_list"]
+    for line in texts_list:
+        name = line.pop(0)
+        create_text_image(index, line, name)
     end = time.time()
     print "Finished, time: %.2f seconds" % (end - start)

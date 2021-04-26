@@ -83,3 +83,9 @@ def copy_directories():
                  os.path.join(cfg.config["winamp_root"], cfg.config["image_dir"]))
     copyanything(os.path.join(cfg.config["root_dir"], cfg.config["text_dir"]),
                  os.path.join(cfg.config["winamp_root"], cfg.config["text_dir"]))
+
+
+def get_text_image_file_name(file_name):
+    directory = os.path.dirname(cfg.config["winamp_root"])
+    outfile = os.path.join(directory, file_name + ".png")
+    return outfile
