@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-title = "SEA DRAGON"
+title = "QUESTOBRASS"
+banner = "PSY TECH PLANET"
 composer = "E Z Z Z E R"
 painter = "DREAM"
-banner = "PSY TECH PLANET"
-root_dir = "D:\MakingMusic\Automatic Music Machine/5.released/No118 leviathan"
+root_dir = r'D:\MakingMusic\Automatic Music Machine\5.released\No127 - Questobrass'.replace('\\', '/')
 
 config = {"root_dir": root_dir,
           "actions": ["process_image", "text_images", "site_images", "hue_images", "copy_directories"],
@@ -23,9 +23,9 @@ config = {"root_dir": root_dir,
                                          "enable": False,
                                          "forground_color": [255, 0, 0],
                                          "background_color": [250, 0, 0]},
-                            "fx": "fx_dreamsmooth  1,1,27,0.861,0,0,4,0,0",
+                            "fx": "fx_dreamsmooth  3,1,27,0.861,0,0,4,0,0",
                             # "fx_dreamsmooth 1,1,1,0.8,0,0.8,1,24,0",
-                            "hue_saturation": [20, -45, 90, 100]
+                            "hue_saturation": [-0, -0, 0, 100]
                             },
           "hue_scale": [512, 512],
           "hue_circle": False,
@@ -63,7 +63,7 @@ config = {"root_dir": root_dir,
               ["InstegramPic", 1080.0, 1350.0, []]
           ],
           "text_list_for_video": [
-              [title, "Segoe UI Light", 85, (1.0, 1.0, 1.0), "ripple  3.4,20,2,0,0"],
+              [title, "Segoe UI", 85, (1.0, 1.0, 1.0), "ripple  3.4,20,2,0,0"],
               ["PSYCHEDELIC", "Segoe UI Bold", 85, (1.0, 1.0, 1.0), "fx_gaussian_blur  3,0,0,1,0,0,0,50,50"],
               ["MELODIC", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gcd_crt  1.8,1.8,0,0"],
               ["TECHNO", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_wind  20,0,0.7,20,1,0,0,0,50,50"],
@@ -74,19 +74,19 @@ config = {"root_dir": root_dir,
               ["melody", "Segoe UI Bold", 85, (1.0, 1.0, 1.0), "fx_dreamsmooth  3,1,1,0.8,0,0.8,1,24,0.0"],
               ["tech", "Segoe UI Light", 85, (1.0, 1.0, 1.0), "fx_gcd_crt  1.8,1.8,0,0"]],
           "text_list": [
-              ["composer", composer, "Segoe UI Light", 85, (1.0, 1.0, 1.0),
+              ["composer", composer, "Segoe UI", 88, (1.0, 1.0, 1.0),
                "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-              ["banner_center", banner, "Segoe UI Light", 84, (1.0, 1.0, 1.0),
+              ["banner_center", banner, "Segoe UI Bold", 128, (1.0, 1.0, 1.0),
                "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-              ["title", title, "Segoe UI Light", 88, (1.0, 1.0, 1.0),
+              ["title", title, "Segoe UI Semi-Light", 88, (1.0, 1.0, 1.0),
                "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-              ["title_small", title, "Segoe UI Light", 44, (1.0, 1.0, 1.0),
+              ["title_small", title, "Segoe UI Semi-Light", 44, (1.0, 1.0, 1.0),
                "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
               ["dream", painter, "Segoe UI Light", 84, (1.0, 1.0, 1.0),
                "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-              ["composer_small", composer, "Segoe UI Light", 45, (1.0, 1.0, 1.0),
+              ["composer_small", composer, "Segoe UI Semi-Light", 48, (1.0, 1.0, 1.0),
                "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"],
-              ["dream_small", painter, "Segoe UI Light", 36, (1.0, 1.0, 1.0),
+              ["dream_small", painter, "Segoe UI", 36, (1.0, 1.0, 1.0),
                "fx_textured_glass 17.6,11.6,0,0,0.319,7.03,5,0,50,50"]
           ]
           }

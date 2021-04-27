@@ -24,9 +24,7 @@ def process(sites_image_list):
     images_name_position = sites_image_list[3]
 
     infile = get_processed_image_file_name()
-    print 'Processing file %s ' % infile
     image = pdb.gimp_file_load(infile, infile, run_mode=RUN_NONINTERACTIVE)
-    print "File %s loaded OK" % infile
     scale_crop(image, x, y)
     logo_margin = cfg.config["logo_margin"] * image.width
     for name, position in images_name_position:

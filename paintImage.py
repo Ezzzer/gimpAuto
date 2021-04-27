@@ -8,7 +8,7 @@ from gimpfu import *
 import config as cfg
 import createTextImages
 from createSitesImages import create_images
-from utils import scale_crop, crop_circle, save_image, copy_directories, set_std_output, get_processed_image_name, \
+from utils import scale_crop, crop_circle, save_image, get_processed_image_name, \
     get_processed_image_fx
 
 
@@ -119,19 +119,3 @@ def hue_images():
                                          -process_image_hue_params[2], 100)
 
 
-def create_all():
-    start = time.time()
-    set_std_output()
-    actions = cfg.config["actions"]
-    if "process_image" in actions:
-        process_basic_image()
-    if "hue_images" in actions:
-        hue_images()
-    if "text_images" in actions:
-        text_images()
-    if "site_images" in actions:
-        site_images()
-    if "copy_directories" in actions:
-        copy_directories()
-    end = time.time()
-    print "Finished, time: %.2f seconds" % (end - start)
