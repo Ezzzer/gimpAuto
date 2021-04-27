@@ -102,8 +102,15 @@ def get_image_dir():
 
 
 def get_processed_image_name():
-    infile = get_pic_image_file_name(cfg.config["processed_image"])
-    return infile
+    return cfg.config["process_image"]["name"]
+
+
+def get_processed_image_file_name():
+    return get_pic_image_file_name(get_processed_image_name())
+
+
+def get_processed_image_fx():
+    return cfg.config["process_image"]["fx"]
 
 
 def get_pic_image_file_name(name):
@@ -113,4 +120,4 @@ def get_pic_image_file_name(name):
 
 def set_std_output():
     sys.stderr = open("C:/temp/python-fu-output.txt", 'a')
-    sys.stdout = sys.stderr  # So that they both go to the same file
+    # sys.stdout = sys.stderr  # So that they both go to the same file

@@ -8,7 +8,8 @@ from gimpfu import *
 import config as cfg
 import createTextImages
 from createSitesImages import create_images
-from utils import scale_crop, crop_circle, save_image, copy_directories, set_std_output
+from utils import scale_crop, crop_circle, save_image, copy_directories, set_std_output, get_processed_image_name, \
+    get_processed_image_fx
 
 
 def create_new_image(hue, file_name, new_name, scale_x=None, scale_y=None):
@@ -32,22 +33,49 @@ def create_dream_image(file_name):
     image = pdb.gimp_file_load(file_name, file_name, run_mode=RUN_NONINTERACTIVE)
     print "File %s loaded OK" % file_name
     drawable = image.active_layer
-    pdb.gimp_context_set_gradient("FG to BG (HSV clockwise hue)")
-    color = gimpcolor.RGB(255, 255, 255)  # integers in 0->255 range)
-    pdb.gimp_palette_set_background(color)
-    color = gimpcolor.RGB(250, 0, 0)  # Floats in 0.->1. range)
-    pdb.gimp_palette_set_foreground(color)
-    pdb.plug_in_gradmap(image, drawable)
-    pdb.plug_in_gmic_qt(image, drawable, 1, 0, cfg.config["process_image_fx"])
+    if get_processed_image_gradient_enabled():
+        gradient_map(drawable, image)
+    pdb.plug_in_gmic_qt(image, drawable, 1, 0, get_processed_image_fx())
     return drawable, image
 
 
+def gradient_map(drawable, image):
+    pdb.gimp_context_set_gradient(get_processed_image_gradient_name())
+    color = get_processed_image_gradient_for_color()
+    pdb.gimp_palette_set_background(color)
+    color = get_processed_image_gradient_back_color()
+    pdb.gimp_palette_set_foreground(color)
+    pdb.plug_in_gradmap(image, drawable)
+
+
+def get_processed_image_hue_saturation():
+    return cfg.config["process_image"]["hue_saturation"]
+
+
+def get_processed_image_gradient_name():
+    return cfg.config["process_image"]["gradient"]["name"]
+
+
+def get_processed_image_gradient_enabled():
+    return cfg.config["process_image"]["gradient"]["enable"]
+
+
+def get_processed_image_gradient_for_color():
+    color = cfg.config["process_image"]["gradient"]["forground_color"]
+    return gimpcolor.RGB(color[0], color[1], color[2])
+
+
+def get_processed_image_gradient_back_color():
+    color = cfg.config["process_image"]["gradient"]["background_color"]
+    return gimpcolor.RGB(color[0], color[1], color[2])
+
+
 def process_basic_image():
-    process_image_hue_params = cfg.config["process_image_hue_params"]
+    process_image_hue_params = get_processed_image_hue_saturation()
     drawable, image = create_dream_image(get_basic_image_file_name())
     pdb.gimp_drawable_hue_saturation(drawable, HUE_RANGE_ALL, process_image_hue_params[0], process_image_hue_params[1],
                                      process_image_hue_params[2], process_image_hue_params[3])
-    save_image(drawable, image, cfg.config["processed_image"]+".png")
+    save_image(drawable, image, get_processed_image_name() + ".png")
     pdb.gimp_image_delete(image)
 
 
@@ -65,8 +93,8 @@ def text_images():
 
 def hue_images():
     scale = cfg.config["hue_scale"]
-    process_image_hue_params = cfg.config["process_image_hue_params"]
-    process_image_hue_intervals = cfg.config["process_image_hue_intervals"]
+    process_image_hue_params = cfg.config["hue_params"]
+    process_image_hue_intervals = cfg.config["hue_intervals"]
     drawable, image = create_dream_image(get_basic_image_file_name())
     if scale[0] is not None:
         scale_crop(image, scale[0], scale[1])

@@ -23,7 +23,7 @@ def process(sites_image_list):
     y = sites_image_list[2]
     images_name_position = sites_image_list[3]
 
-    infile = get_processed_image_name()
+    infile = get_processed_image_file_name()
     print 'Processing file %s ' % infile
     image = pdb.gimp_file_load(infile, infile, run_mode=RUN_NONINTERACTIVE)
     print "File %s loaded OK" % infile

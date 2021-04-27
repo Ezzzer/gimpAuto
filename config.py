@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-title = "INDEPENDENCE SET"
+title = "SEA DRAGON"
 composer = "E Z Z Z E R"
 painter = "DREAM"
 banner = "PSY TECH PLANET"
-root_dir = "D:/MakingMusic/Automatic Music Machine/3.In Progress/Bit40DjSet"
+root_dir = "D:\MakingMusic\Automatic Music Machine/5.released/No118 leviathan"
 
 config = {"root_dir": root_dir,
           "actions": ["process_image", "text_images", "site_images", "hue_images", "copy_directories"],
@@ -13,19 +13,28 @@ config = {"root_dir": root_dir,
           # "actions": ["text_images","site_images", "copy_directories"],
           # "actions": ["site_images", "copy_directories"],
           # "actions": [ "copy_directories"],
-          "process_image_fx": "fx_dreamsmooth 3,1,1,0.8,0,0.8,1,24,0",
-          "circle": True,
-          "process_image_hue_params": [-35, -10, 0, 100],
-          "process_image_hue_intervals": [-90, 90],
-          "hue_circle": False,
-          "hue_scale": [512, 512],
-          "site_image_offset": 0,
-          "basic_image": "basic.png",
-          "image_dir": "images",
+          # "process_image_fx": "fx_dreamsmooth  1,1,27,0.861,0,0,4,0,0",  # "fx_dreamsmooth 1,1,1,0.8,0,0.8,1,24,0",
           "text_dir": "texts",
-          "processed_image": "processedImage",
+          "image_dir": "images",
+          "circle": True,
+          "basic_image": "basic.png",
+          "process_image": {"name": "processedImage",
+                            "gradient": {"name": "FG to BG (HSV clockwise hue)",
+                                         "enable": False,
+                                         "forground_color": [255, 0, 0],
+                                         "background_color": [250, 0, 0]},
+                            "fx": "fx_dreamsmooth  1,1,27,0.861,0,0,4,0,0",
+                            # "fx_dreamsmooth 1,1,1,0.8,0,0.8,1,24,0",
+                            "hue_saturation": [20, -45, 90, 100]
+                            },
+          "hue_scale": [512, 512],
+          "hue_circle": False,
+          "hue_params": [0, -5, 5, 100],
+          "hue_intervals": [-90, 90],
+
           "logo_margin": 0.03,
           "logo": "D:/MakingMusic/Automatic Music Machine/Images/logoWhite.png",
+
           "winamp_root": "D:/MakingMusic/Automatic Music Machine/Images/",
           "site_image_list": [
               ["YouTubeThumbnail", 1280.0, 720.0,
