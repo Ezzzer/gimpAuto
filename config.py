@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-title = "QUESTOBRASS"
+title = "DANCING STAR"
 banner = "PSY TECH PLANET"
 composer = "E Z Z Z E R"
 painter = "DREAM"
-root_dir = r'D:\MakingMusic\Automatic Music Machine\5.released\No127 - Questobrass'.replace('\\', '/')
+root_dir = r'D:\MakingMusic\Automatic Music Machine\5.released\Dancing Star'.replace('\\', '/')
 
 config = {"root_dir": root_dir,
           "actions": ["process_image", "text_images", "site_images", "hue_images", "copy_directories"],
