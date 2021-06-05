@@ -7,13 +7,12 @@ from gimpfu import *
 from gimpfu import pdb
 
 import config as cfg
+import tracks
 
 
 def scale_crop(image, x, y):
     print image.width
     print image.height
-    dx = 1.0
-    dy = 1.0
 
     if image.width < x:
         dx = float(x) / image.width
@@ -88,17 +87,21 @@ def get_text_image_file_name(name):
 
 
 def get_text_dir():
-    directory = os.path.join(cfg.config["root_dir"], cfg.config["text_dir"])
+    directory = os.path.join(get_root_dir(), cfg.config["text_dir"])
     if not os.path.exists(directory):
         os.makedirs(directory)
     return directory
 
 
 def get_image_dir():
-    directory = os.path.join(cfg.config["root_dir"], cfg.config["image_dir"])
+    directory = os.path.join(get_root_dir(), cfg.config["image_dir"])
     if not os.path.exists(directory):
         os.makedirs(directory)
     return directory
+
+
+def get_root_dir():
+    return tracks.tracks[tracks.current_track]["rootDir"]
 
 
 def get_processed_image_name():
@@ -110,11 +113,15 @@ def get_processed_image_file_name():
 
 
 def get_processed_image_fx():
-    return cfg.config["process_image"]["fx"]
+    return cfg.config["process_image"]["fx"]["value"]
 
 
-def get_pic_image_file_name(name):
-    infile = os.path.join(get_image_dir(), name + ".png")
+def is_processed_image_fx_enabled():
+    return cfg.config["process_image"]["fx"]["enable"]
+
+
+def get_pic_image_file_name(name,soffix = "png"):
+    infile = os.path.join(get_image_dir(), name + "." + soffix)
     return infile
 
 

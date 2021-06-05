@@ -19,9 +19,10 @@ def add_image(image, new_image, offset_x, offset_y):
 
 def process(sites_image_list):
     new_name = sites_image_list[0]
-    x = sites_image_list[1]
-    y = sites_image_list[2]
-    images_name_position = sites_image_list[3]
+    soffix = sites_image_list[1]
+    x = sites_image_list[2]
+    y = sites_image_list[3]
+    images_name_position = sites_image_list[4]
 
     infile = get_processed_image_file_name()
     image = pdb.gimp_file_load(infile, infile, run_mode=RUN_NONINTERACTIVE)
@@ -57,7 +58,7 @@ def process(sites_image_list):
             y_pos = image.height / 2 - 2.3 * text_image.height
         add_image(image, text_image, int(x_pos), int(y_pos))
     drawable = image.active_layer
-    pdb.gimp_file_save(image, drawable, get_pic_image_file_name(new_name), '?')
+    pdb.gimp_file_save(image, drawable, get_pic_image_file_name(new_name,soffix), '?')
     pdb.gimp_image_delete(image)
 
 
