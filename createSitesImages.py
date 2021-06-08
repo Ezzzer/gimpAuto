@@ -6,8 +6,8 @@ from utils import *  # scale_crop, get_text_image_file_name, get_processed_image
 
 
 def load_image(image, name):
-    if name in cfg.config:
-        return pdb.gimp_file_load_layer(image, cfg.config[name])
+    if name in cfg.Config().config:
+        return pdb.gimp_file_load_layer(image, cfg.Config().config[name])
     return pdb.gimp_file_load_layer(image, get_text_image_file_name(name))
 
 
@@ -27,7 +27,7 @@ def process(sites_image_list):
     infile = get_processed_image_file_name()
     image = pdb.gimp_file_load(infile, infile, run_mode=RUN_NONINTERACTIVE)
     scale_crop(image, x, y)
-    logo_margin = cfg.config["logo_margin"] * image.width
+    logo_margin = cfg.Config().config["logo_margin"] * image.width
     for name, position in images_name_position:
         x_pos = 0
         y_pos = 0
@@ -58,14 +58,14 @@ def process(sites_image_list):
             y_pos = image.height / 2 - 2.3 * text_image.height
         add_image(image, text_image, int(x_pos), int(y_pos))
     drawable = image.active_layer
-    pdb.gimp_file_save(image, drawable, get_pic_image_file_name(new_name,soffix), '?')
+    pdb.gimp_file_save(image, drawable, get_pic_image_file_name(new_name, soffix), '?')
     pdb.gimp_image_delete(image)
 
 
 def create_images():
     start = time.time()
     set_std_output()
-    for line in cfg.config["site_image_list"]:
+    for line in cfg.Config().config["site_image_list"]:
         process(line)
     end = time.time()
     print "Finished, time: %.2f seconds" % (end - start)

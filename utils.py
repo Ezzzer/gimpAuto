@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import errno
 import os
 import shutil
@@ -71,15 +72,15 @@ def copyanything(src, dst):
 
 def copy_directories():
     try:
-        shutil.rmtree(os.path.join(cfg.config["winamp_root"], cfg.config["image_dir"]))
+        shutil.rmtree(os.path.join(cfg.Config().config ["winamp_root"], cfg.Config().config["image_dir"]))
     except:
         print "ok, nothing to delete on target"
     try:
-        shutil.rmtree(os.path.join(cfg.config["winamp_root"], cfg.config["text_dir"]))
+        shutil.rmtree(os.path.join(cfg.Config().config["winamp_root"], cfg.Config().config["text_dir"]))
     except:
         print "ok, nothing to delete on target"
-    copyanything(get_image_dir(), os.path.join(cfg.config["winamp_root"], cfg.config["image_dir"]))
-    copyanything(get_text_dir(), os.path.join(cfg.config["winamp_root"], cfg.config["text_dir"]))
+    copyanything(get_image_dir(), os.path.join(cfg.Config().config["winamp_root"], cfg.Config().config["image_dir"]))
+    copyanything(get_text_dir(), os.path.join(cfg.Config().config["winamp_root"], cfg.Config().config["text_dir"]))
 
 
 def get_text_image_file_name(name):
@@ -87,25 +88,25 @@ def get_text_image_file_name(name):
 
 
 def get_text_dir():
-    directory = os.path.join(get_root_dir(), cfg.config["text_dir"])
+    directory = os.path.join(get_root_dir(), cfg.Config().config["text_dir"])
     if not os.path.exists(directory):
         os.makedirs(directory)
     return directory
 
 
 def get_image_dir():
-    directory = os.path.join(get_root_dir(), cfg.config["image_dir"])
+    directory = os.path.join(get_root_dir(), cfg.Config().config["image_dir"])
     if not os.path.exists(directory):
         os.makedirs(directory)
     return directory
 
 
 def get_root_dir():
-    return tracks.tracks[tracks.current_track]["rootDir"]
+    return tracks.Track().get_root_dir()
 
 
 def get_processed_image_name():
-    return cfg.config["process_image"]["name"]
+    return cfg.Config().config["process_image"]["name"]
 
 
 def get_processed_image_file_name():
@@ -113,11 +114,11 @@ def get_processed_image_file_name():
 
 
 def get_processed_image_fx():
-    return cfg.config["process_image"]["fx"]["value"]
+    return cfg.Config().config["process_image"]["fx"]["value"]
 
 
 def is_processed_image_fx_enabled():
-    return cfg.config["process_image"]["fx"]["enable"]
+    return cfg.Config().config["process_image"]["fx"]["enable"]
 
 
 def get_pic_image_file_name(name,soffix = "png"):
@@ -127,4 +128,13 @@ def get_pic_image_file_name(name,soffix = "png"):
 
 def set_std_output():
     sys.stderr = open("C:/temp/python-fu-output.txt", 'a')
-    # sys.stdout = sys.stderr  # So that they both go to the same file
+    sys.stdout = sys.stderr  # So that they both go to the same file
+
+
+class Singleton(type):
+    _instances = {}
+
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]

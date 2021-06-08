@@ -19,7 +19,7 @@ def create_new_image(hue, file_name, new_name, scale_x=None, scale_y=None):
     drawable, image = create_dream_image(file_name)
     if scale_x is not None:
         scale_crop(image, scale_x, scale_y)
-    if cfg.config["circle"]:
+    if cfg.Config().config["circle"]:
         crop_circle(image)
     pdb.gimp_drawable_hue_saturation(drawable, HUE_RANGE_ALL, hue, -25, 10, 100)
     save_image(drawable, image, new_name)
@@ -42,7 +42,7 @@ def create_dream_image(file_name):
         pdb.gimp_drawable_hue_saturation(drawable, HUE_RANGE_ALL, process_image_hue_params[0],
                                          process_image_hue_params[1],
                                          process_image_hue_params[2], process_image_hue_params[3])
-    if cfg.config["circle"]:
+    if cfg.Config().config["circle"]:
         crop_circle(image)
 
     return drawable, image
@@ -58,28 +58,28 @@ def gradient_map(drawable, image):
 
 
 def get_processed_image_hue_saturation():
-    return cfg.config["process_image"]["hue_saturation"]["value"]
+    return cfg.Config().config["process_image"]["hue_saturation"]["value"]
 
 
 def is_processed_image_hue_saturation_enabled():
-    return cfg.config["process_image"]["hue_saturation"]["enable"]
+    return cfg.Config().config["process_image"]["hue_saturation"]["enable"]
 
 
 def get_processed_image_gradient_name():
-    return cfg.config["process_image"]["gradient"]["name"]
+    return cfg.Config().config["process_image"]["gradient"]["name"]
 
 
 def get_processed_image_gradient_enabled():
-    return cfg.config["process_image"]["gradient"]["enable"]
+    return cfg.Config().config["process_image"]["gradient"]["enable"]
 
 
 def get_processed_image_gradient_for_color():
-    color = cfg.config["process_image"]["gradient"]["forground_color"]
+    color = cfg.Config().config["process_image"]["gradient"]["forground_color"]
     return gimpcolor.RGB(color[0], color[1], color[2])
 
 
 def get_processed_image_gradient_back_color():
-    color = cfg.config["process_image"]["gradient"]["background_color"]
+    color = cfg.Config().config["process_image"]["gradient"]["background_color"]
     return gimpcolor.RGB(color[0], color[1], color[2])
 
 
@@ -90,11 +90,11 @@ def process_basic_image():
 
 
 def get_basic_image_file_name():
-    return os.path.join(get_root_dir(), cfg.config["basic_image"])
+    return os.path.join(get_root_dir(), cfg.Config().config["basic_image"])
 
 
 def get_hue_image_file_name():
-    hue_path = os.path.join(get_root_dir(), cfg.config["hue_image"])
+    hue_path = os.path.join(get_root_dir(), cfg.Config().config["hue_image"])
     if os.path.exists(hue_path):
         return hue_path
     return get_basic_image_file_name()
@@ -109,13 +109,13 @@ def text_images():
 
 
 def hue_images():
-    scale = cfg.config["hue_scale"]
-    process_image_hue_params = cfg.config["hue_params"]
-    process_image_hue_intervals = cfg.config["hue_intervals"]
+    scale = cfg.Config().config["hue_scale"]
+    process_image_hue_params = cfg.Config().config["hue_params"]
+    process_image_hue_intervals = cfg.Config().config["hue_intervals"]
     drawable, image = create_dream_image(get_hue_image_file_name())
     if scale[0] is not None:
         scale_crop(image, scale[0], scale[1])
-    if cfg.config["hue_circle"]:
+    if cfg.Config().config["hue_circle"]:
         crop_circle(image)
     start_hue = process_image_hue_intervals[0]
     end_hue = process_image_hue_intervals[1]

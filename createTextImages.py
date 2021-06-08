@@ -38,15 +38,14 @@ def create_text_image(index, line, file_name=None):
 
 def create_text_images():
     start = time.time()
-    set_std_output()
     index = 1
-    texts_list = cfg.config["text_list_for_video"]
+    texts_list = cfg.Config().config["text_list_for_video"]
     for line in texts_list:
         create_text_image(index, line)
         index += 1
 
     index = -1
-    texts_list = cfg.config["text_list"]
+    texts_list = cfg.Config().config["text_list"]
     for line in texts_list:
         name = line.pop(0)
         create_text_image(index, line, name)
